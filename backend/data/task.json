@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "bbbf1ba9-198c-4b03-b74d-ad75a2d15c11",
+      "title": "Task1",
+      "description": "Wash dishes",
+      "status": "todo"
+    },
+    {
+      "id": "08d90939-a2b5-463f-85c8-cb8983304fce",
+      "title": "",
+      "description": "",
+      "status": "todo"
+    },
+    {
+      "id": "e685b24d-67ba-4718-a47e-27aa03b16825",
+      "title": "",
+      "description": "",
+      "status": "inprogress"
+    }
+  ]
+}
