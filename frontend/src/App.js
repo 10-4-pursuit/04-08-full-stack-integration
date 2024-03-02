@@ -1,37 +1,42 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import HomePage from "./pages/HomePage";
+import TaskListPage from "./pages/TaskListPage";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import TaskList from './components/TaskList';
-import TaskForm from './components/TaskForm';
-import { useState } from 'react';
-
-
-
-import './App.css';
-
-
+import "./App.css";
 
 function App() {
-  const [taskList, setTaskList] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
-  const onAddTask = (task) => {
-    setTaskList([...taskList, task]);
-  }
+
  
-  
 
+  const onSave = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
 
+  const onAddTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
+
+ 
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+        <nav>
+          <Link className="link" to="/add">Add Task</Link>
+          <Link className="link" to="/">Task List</Link>
+        </nav>
 
-      <TaskForm onAddTask={onAddTask} />
-      <TaskList taskList={taskList} />
-
-    
-
+        <Routes>
+          <Route path="/" element={<TaskListPage taskList={tasks} />} />
+          <Route path="/add" element={<HomePage  onSave={onSave} onAddTask={onAddTask} />} />
+        </Routes>
       </div>
-
+    </Router>
   );
 }
 
-export default App;
 
+export default App;

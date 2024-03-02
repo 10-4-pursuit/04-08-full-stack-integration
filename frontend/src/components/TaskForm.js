@@ -1,17 +1,24 @@
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import {v4 as uuidv4} from 'uuid';
 
 
-const TaskForm = ({ onAddTask}) => {
+const TaskForm = ({ onAddTask, onSave}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('todo');
+
+    useEffect(() => {
+    if(onAddTask){
+        setTitle('');
+        setDescription('');
+        setStatus('todo');
+    }
+    }, [onAddTask]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newTask = {
-            // Generate ID immediately but may override if editing
             id: uuidv4(),   
             title,
             description,
@@ -33,6 +40,7 @@ const TaskForm = ({ onAddTask}) => {
                 setTitle('');
                 setDescription('');
                 setStatus('todo');
+                onSave(data);
 
             } else {
                 alert('Failed to create task');
@@ -46,7 +54,8 @@ const TaskForm = ({ onAddTask}) => {
     return (
 
 
-        <div className="card">
+        <div className="card" style={{ maxWidth: '300px', margin: '150px auto'  }}>
+
             <div className="card-header">
                 Add Task
             </div>

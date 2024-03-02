@@ -36,16 +36,19 @@ const TaskList = () => {
             .catch(err => {
                 console.log(err);
             });
-    }   
-
+    } 
+    
+  
+    
   
       
 
     return (
         <div>
-            <h1>Task List</h1>
+            <h1 style={{margin: '20px auto'}}>Task List</h1>
          {tasks.map((task) => (
-             <div key={task.id} className="card mb-3">
+             <div key={task.id} className="card mb-3" style={{ maxWidth: '300px', margin: ' auto' }}>
+
                 <div className="card-body">
                     <h5 className="card-title">{task.title}</h5>
                     <p className="card-text">{task.description}</p>
@@ -69,6 +72,7 @@ const TaskList = () => {
 
                     </div>
                     <div className="mt-3">
+                       
                         <button onClick={() => deleteTask(task.id)} className="btn btn-danger">Delete</button>
                     </div>
 
